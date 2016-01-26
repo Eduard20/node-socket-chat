@@ -6,6 +6,7 @@ jQuery(function($){
     var socket = io.connect();
     var $chat = $("#chat");
     var $setNick = $("#setNick");
+    var $users = $("#users");
     var $nickError = $("#nickError");
     var $nickname = $("#nickname");
     var $messageBox = $('#messageBox');
@@ -25,6 +26,13 @@ jQuery(function($){
         $nickname.val("");
     });
 
+    socket.on('usernames', function(data) {
+       var html = '';
+        for(i=0; i < data.length; i++) {
+            html += data[i] + '<br/>'
+        }
+        $users.html(html);
+    });
 
     $messageBox.submit(function(e){
         e.preventDefault();
@@ -32,6 +40,6 @@ jQuery(function($){
         $message.val("");
     });
     socket.on('new message', function(data){
-        $chat.append(data + "<br>");
+        $chat.append('<b>' + data.nick +  ': </b>' + data.msg + '<br>');
     });
 });

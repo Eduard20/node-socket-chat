@@ -1,5 +1,7 @@
 #chat {
-    height: 500px;
+    min-height: 100px;
+    height: 100%;
+    overflow-y: scroll;
 }
 #chatWrap {
     float: left;
@@ -7,4 +9,11 @@
 }
 #contentWrap {
     display: none;
+}
+#users {
+    display: inline-block;
+    font-weight: bold;
+}
+input {
+    outline: none;
 }
