@@ -36,10 +36,15 @@ jQuery(function($){
 
     $messageBox.submit(function(e){
         e.preventDefault();
-        socket.emit('send message', $message.val());
+        socket.emit('send message', $message.val(), function(data){
+            $chat.append('<span class="error">' + data + '</span><br>');
+        });
         $message.val("");
     });
     socket.on('new message', function(data){
-        $chat.append('<b>' + data.nick +  ': </b>' + data.msg + '<br>');
+        $chat.append('<span class="msg"><b>' + data.nick +  ': </b>' + data.msg + '</span><br>');
+    });
+    socket.on('pm', function(data){
+        $chat.append('<span class="personalM"><b>' + data.nick +  ': </b>' + data.msg + '</span><br>');
     });
 });

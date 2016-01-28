@@ -1,7 +1,6 @@
 #chat {
-    min-height: 100px;
+    min-height: 500px;
     height: 100%;
-    overflow-y: scroll;
 }
 #chatWrap {
     float: left;
@@ -16,4 +15,11 @@
 }
 input {
     outline: none;
+}
+.error {
+    color: #ff0000;
+}
+.personalM {
+    color: #cccccc;
+    font-style: italic;
 }
